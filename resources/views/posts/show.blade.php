@@ -22,12 +22,18 @@
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                         </form>
+
+                        <form method="POST" action="{{ url('post/update_status' . '/' . $post->id) }}" accept-charset="UTF-8" style="display:inline">
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-success btn-sm" title="Delete Post" onclick="return confirm(&quot;ทำการยืนยัน โพสของคุณจะถูกปิดการแสดงความคิดเห็นและเปลี่ยนสถานะ?&quot;)"><i class="fa fa-correct" aria-hidden="true"></i> ฉันได้ทำการแลกเปลี่ยนเสร็จสิ้น</button>
+                        </form>
+
                         @endif
                         <br/>
                         <br/>
 
                         <div class="table-responsive">
-                        <img src="{{$post->img_url}}" height="200" class="img-fluid">
+                        <img src="{{$post->img_url}}" height="300" width="100%">
                             <table class="table">
                                 <tbody>
                                     <tr><th> Name </th><td> {{ $post->name }} </td></tr><tr><th> Description </th><td> {{ $post->description }} </td></tr>
@@ -39,12 +45,16 @@
 
                     <div class="p-4">
                             <h3>Comments</h3>
-                            @if (Auth::check())
+                            @if (Auth::check() && !$post->status)
                             {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
                             <p>{{ Form::textarea('body', old('body')) }}</p>
                             {{ Form::hidden('post_id', $post->id) }}
                             <p>{{ Form::submit('Send') }}</p>
                             {{ Form::close() }}
+                            @else
+                            <h3 class="p-4">
+                            ความคิดเห็นถูกปิดการใช้งาน เนื่องจาก โพสนี้ได้ทำการแลกเปลี่ยนเรียบร้อยแล้ว
+                            </h3>
                             @endif
                             @forelse ($post->comments as $comment)
                             <p>{{ $comment->user->name }} {{$comment->created_at}}</p>

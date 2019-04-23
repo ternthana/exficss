@@ -126,6 +126,15 @@ class PostsController extends Controller
         return redirect('posts')->with('flash_message', 'Post updated!');
     }
 
+
+
+    public function updateStatus($id)
+    {
+        $post = Post::findOrFail($id);
+        $post->update([ "status" =>  1]);
+        return redirect('posts')->with('flash_message', 'Post updated!');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

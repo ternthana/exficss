@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('post/update_status/{id}', 'PostsController@updateStatus');
+
 Route::resource('posts', 'PostsController');
 Route::resource('comments', 'CommentsController');
 

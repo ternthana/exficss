@@ -25,13 +25,14 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'img_url', 'description','user_id'];
+    protected $fillable = ['name', 'img_url', 'description','user_id','status'];
+
+
 
     public function user(){
         return $this->belongsTo('App\User');
     }
-    public function comments()
-{
-  return $this->hasMany('App\Comment');
-}
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
 }

@@ -29,7 +29,11 @@
                         <div class="row">
                             @foreach($posts as $item)
                                 <div class="col-md-4">
-                                        <div class="card" style="width: 100%;">
+                                <div class="card post-{{$item->status}}" style="width: 100%;">
+
+                                    @if($item->status)
+                                    <div class="on-status-1">ทำการแลกเปลี่ยนแล้ว</div>
+                                    @endif
                                         <img class="card-img-top" src="{{$item->img_url}}" alt="Card image cap">
                                                 <div class="card-body">
                                                 <h5 class="card-title">{{$item->name}}</h5>
@@ -47,9 +51,11 @@
                                                 @endif
                                                 </div>
 
+
                                                 <hr>
                                                 <div class="card-footer">
                                                     โพสโดย<br>
+
                                                     {{$item->user->name}}
                                                     ({{$item->user->email}})
                                                     <hr>
