@@ -20,6 +20,7 @@ class PostsController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $user = Auth::user();
 
         if (!empty($keyword)) {
             $posts = Post::where('name', 'LIKE', "%$keyword%")
@@ -28,6 +29,10 @@ class PostsController extends Controller
                 ->latest()->paginate($perPage);
         } else {
             $posts = Post::latest()->paginate($perPage);
+        }
+        foreach( $posts as $post) {
+            $post->user;
+            $post->check = $user->id == $post->user->id ? true : false;
         }
 
         return view('posts.index', compact('posts'));
@@ -52,12 +57,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-
         $requestData = $request->all();
+
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $imageName);
+
+
 
         $post = Post::create($requestData);
         $user = Auth::user();
-        $post->update(["user_id" =>  $user->id]);
+
+        $post->update(["user_id" =>  $user->id, "img_url" =>  '/images/'.$imageName]);
 
         return redirect('posts')->with('flash_message', 'Post added!');
     }
@@ -72,6 +82,9 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
+        $user = Auth::user();
+
+        $post->check = $user->id == $post->user->id ? true : false;
 
         return view('posts.show', compact('post'));
     }
@@ -102,9 +115,13 @@ class PostsController extends Controller
     {
 
         $requestData = $request->all();
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $imageName);
 
         $post = Post::findOrFail($id);
         $post->update($requestData);
+        $post->update([ "img_url" =>  '/images/'.$imageName]);
+
 
         return redirect('posts')->with('flash_message', 'Post updated!');
     }

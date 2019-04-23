@@ -3,11 +3,9 @@
     <input class="form-control" name="name" type="text" id="name" value="{{ isset($post->name) ? $post->name : ''}}" >
     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('img_url') ? 'has-error' : ''}}">
-    <label for="img_url" class="control-label">{{ 'Img Url' }}</label>
-    <textarea class="form-control" rows="5" name="img_url" type="textarea" id="img_url" >{{ isset($post->img_url) ? $post->img_url : ''}}</textarea>
-    {!! $errors->first('img_url', '<p class="help-block">:message</p>') !!}
-</div>
+
+<input type="file" name="image" class="form-control">
+
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     <label for="description" class="control-label">{{ 'Description' }}</label>
     <textarea class="form-control" rows="5" name="description" type="textarea" id="description" >{{ isset($post->description) ? $post->description : ''}}</textarea>
