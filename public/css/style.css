@@ -69,3 +69,19 @@ footer {
     background-color: white;
     padding: 16px 0 16px 0;
 }
+
+textarea {
+    width: 100%
+}
+
+.btn-submit-comment input {
+    background-color: cornflowerblue;
+    color: white;
+    width: 129px;
+    height: 41px;
+    border-radius: 21px;
+    padding-top: 2px;
+    font-size: 14px;
+    font-weight: 400;
+    float: right;
+}
