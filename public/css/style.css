@@ -64,3 +64,8 @@ html, .py-4 {
     font-size: 16px;
     font-weight: 800;
 }
+
+footer {
+    background-color: white;
+    padding: 16px 0 16px 0;
+}
