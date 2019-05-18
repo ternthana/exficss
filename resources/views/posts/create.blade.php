@@ -6,11 +6,9 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Create New Post</div>
+                    <div class="card-header" style="padding-top: 16px; font-size: 16px; font-weight: 800;">ตั้งร้าน</div>
                     <div class="card-body">
-                        <a href="{{ url('/posts') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <br />
-                        <br />
+                        {{-- <a href="{{ url('/posts') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a> --}}
 
                         @if ($errors->any())
                             <ul class="alert alert-danger">
@@ -26,6 +24,8 @@
                             @include ('posts.form', ['formMode' => 'create'])
 
                         </form>
+
+                        <a href="{{ url('/posts') }}" title="Back"><button class="btn btn-warning btn-create" style="font-weight: 400; opacity: 0.8">ยกเลิก</button></a>
 
                     </div>
                 </div>
