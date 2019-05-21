@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row box-search" style="background: #ccc">
+        <div class="row box-search">
             <form method="GET" action="{{ url('/posts') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control input-search" style="width: 602px" name="search" placeholder="ค้นหาร้านอาหาร"value="{{ request('search') }}">

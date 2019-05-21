@@ -33,6 +33,9 @@ html, .py-4 {
     margin-top: -24px;
     display: flex;
     justify-content: center;
+    background-image: url('/images/bg-search.jpg');
+    background-size: 100%;
+    background-position: center;
 }
 
 .input-search {
