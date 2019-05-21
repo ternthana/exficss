@@ -37,8 +37,38 @@
                         </div>
 
                         <div class="form-group">
-                            <h5 class="card-title" style="font-weight: 800;">รายละเอียด</h5>
-                            <p class="card-text">{{ $post->description }}</p>
+                            <h5 class="card-title" style="font-size:16px; font-weight: 800;">รายละเอียดของร้าน (วันเวลาเปิดปิด)</h5>
+                            <p class="card-text" style="font-size:14px;">{{ $post->open_shop }}</p>
+                        </div>
+
+                        <div class="form-group">
+                            <h5 class="card-title" style="font-size:16px; font-weight: 800;">ที่อยู่ของร้าน</h5>
+                            <p class="card-text" style="font-size:14px;">{{ $post->address }}</p>
+                        </div>
+
+                        <div class="form-group">
+                            <h5 class="card-title" style="font-size:16px; font-weight: 800;">เบอร์โทรของร้าน</h5>
+                            <p class="card-text" style="font-size:14px;">{{ $post->mobile }}</p>
+                        </div>
+
+                        <div class="form-group">
+                            <h5 class="card-title" style="font-size:16px; font-weight: 800;">ที่อยู่ของร้าน</h5>
+                            <p class="card-text" style="font-size:14px;">{{ $post->address }}</p>
+                        </div>
+
+                        <div class="form-group">
+                            <h5 class="card-title" style="font-size:16px; font-weight: 800;">ช่วงราคา</h5>
+                            <p class="card-text" style="font-size:14px;">{{ $post->price }}</p>
+                        </div>
+
+                        <div class="form-group">
+                            <h5 class="card-title" style="font-size:16px; font-weight: 800;">Facebook ของร้าน</h5>
+                            <p class="card-text" style="font-size:14px;">{{ $post->facebook }}</p>
+                        </div>
+
+                        <div class="form-group">
+                            <h5 class="card-title" style="font-size:16px; font-weight: 800;">Instagram ของร้าน</h5>
+                            <p class="card-text" style="font-size:14px;">{{ $post->instagram }}</p>
                         </div>
 
                     </div>

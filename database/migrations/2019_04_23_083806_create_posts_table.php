@@ -16,12 +16,17 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
+            $table->text('open_shop')->nullable();
+            $table->text('address')->nullable();
+            $table->text('mobile')->nullable();
+            $table->text('price')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('instagram')->nullable();
             $table->text('img_url')->nullable();
-            $table->text('description')->nullable();
             $table->bigInteger('user_id')->unsigned()->default(1);
             $table->boolean('status')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            });
+        });
     }
 
     /**

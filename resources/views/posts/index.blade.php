@@ -40,9 +40,9 @@
                                     @endif
                                         <img class="card-img-top" src="{{$item->img_url}}" alt="Card image cap">
                                                 <div class="card-body">
-                                                <h5 class="card-title" style="font-size: 16px; font-weight: 800;">{{$item->name}}</h5>
-                                                <p class="card-text" style="font-size: 16px;">{{$item->description}}</p>
-                                                <a href="{{ url('/posts/' . $item->id) }}" title="View Post"><button class="btn btn-info btn-sm btn-review">รีวิว</button></a>
+                                                    <h5 class="card-title" style="font-size: 16px; font-weight: 800;">{{$item->name}}</h5>
+                                                    <p class="card-text" style="font-size: 16px;">{{$item->open_shop}}</p>
+                                                    <a href="{{ url('/posts/' . $item->id) }}" title="View Post"><button class="btn btn-info btn-sm btn-review">รีวิว</button></a>
 
                                                 {{-- @if($item->check)
                                                 <a href="{{ url('/posts/' . $item->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
