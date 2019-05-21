@@ -51,7 +51,8 @@ html, .py-4 {
     width: 129px;
     height: 41px;
     border-radius: 21px;
-    padding-top: 9px;
+    bottom: 0;
+    /* padding-top: 9px; */
     float: right;
     font-weight: 800;
 }
@@ -84,4 +85,8 @@ textarea {
     font-size: 14px;
     font-weight: 400;
     float: right;
+}
+
+.comment-img {
+    height: 163px;
 }

@@ -61,9 +61,7 @@ class PostsController extends Controller
 
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
         request()->image->move(public_path('images'), $imageName);
-
-
-
+        
         $post = Post::create($requestData);
         $user = Auth::user();
 

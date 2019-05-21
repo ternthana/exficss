@@ -26,6 +26,8 @@
                             </form>
                         @endif
 
+                        <div style="margin-top: 30px;"></div>
+
                         <div class="form-group">
                             <h5 class="card-title" style="font-weight: 800;">{{ $post->name }}</h5>
                         </div>
@@ -45,15 +47,16 @@
                             <div class="p-4">
                                     <h3 style="font-size: 16px; font-weight: 800;">แสดงความคิดเห็น</h3>
                                     @if (Auth::check() && !$post->status)
-                                    {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
-                                    <p>{{ Form::textarea('body', old('body')) }}</p>
-                                    {{ Form::hidden('post_id', $post->id) }}
-                                    <p class="btn-submit-comment">{{ Form::submit('แสดงความคิดเห็น') }}</p>
-                                    {{ Form::close() }}
+                                        {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
+                                        <p>{{ Form::textarea('body', old('body')) }}</p>
+                                        <p>{{ Form::input('file', old('img_url')) }}</p>
+                                        {{ Form::hidden('post_id', $post->id) }}
+                                        <p class="btn-submit-comment">{{ Form::submit('แสดงความคิดเห็น') }}</p>
+                                        {{ Form::close() }}
                                     @else
-                                    <h3 class="p-4">
-                                    ความคิดเห็นถูกปิดการใช้งาน เนื่องจาก โพสนี้ได้ทำการแลกเปลี่ยนเรียบร้อยแล้ว
-                                    </h3>
+                                        <h3 class="p-4">
+                                        ความคิดเห็นถูกปิดการใช้งาน เนื่องจาก โพสนี้ได้ทำการแลกเปลี่ยนเรียบร้อยแล้ว
+                                        </h3>
                                     @endif
                                     
                             </div>
@@ -62,12 +65,14 @@
                     <div class="col-md-12" style="margin-top: 28px; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12); padding-bottom: 22px;">
                             <div class="p-4">
                                     @forelse ($post->comments as $comment)
-                                    <h3 style="font-size: 16px; font-weight: 800;">ความคิดเห็น</h3>
-                                    <p>{{ $comment->body }}</p>
-                                    <p>Post by {{ $comment->user->name }}</p>
-                                    <hr>
-                                    @empty
-                                    <p></p>
+                                        <h3 style="font-size: 16px; font-weight: 800;">ความคิดเห็น</h3>
+                                        <p>{{ $comment->body }}</p>
+                                        <h3 style="font-size: 16px; font-weight: 800;">รูปภาพหรือวีดีโอ</h3>
+                                        <img src="{{ $comment->img_url }}" class="comment-img">
+                                        <p>Post by {{ $comment->user->name }}</p>
+                                        <hr>
+                                        @empty
+                                        <p></p>
                                     @endforelse
                             </div>
                     </div>

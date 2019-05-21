@@ -11,7 +11,7 @@ class Comment extends Model
 {
 
   // fields can be filled
-  protected $fillable = ['body', 'user_id', 'post_id'];
+  protected $fillable = ['body', 'img_url', 'user_id', 'post_id'];
 
   public function post()
   {
